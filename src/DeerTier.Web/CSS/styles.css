@@ -814,6 +814,11 @@ textarea
     height: 16px;
 }
 
+.newsBody a
+{
+    color: #8B54DE;
+}
+
 .newsBody p
 {
     margin-top: 10px;
