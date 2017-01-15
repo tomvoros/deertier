@@ -1,0 +1,20 @@
+﻿@model DeerTier.Web.Models.MainCategoriesModel
+
+<div id="ntscNavSection" class="navSection">
+    <div class="navSectionContent" style="display: block">
+        @foreach (var section in Model.Sections)
+        {
+            <h3>@(section.Name)</h3>
+            <ul>
+                @foreach (var category in section.Categories)
+                {
+                    <li><a href="@category.LinkUrl">@(category.ShortName ?? category.Name)</a></li>
+                }
+            </ul>
+        }
+    </div>
+</div>
+
+<div id="wikiNavSection" class="navSection navExternalLinkSection">
+    <a href="http://deanyd.net/sm/index.php?title=Categories" target="_blank" class="link">More at the wiki</a>
+</div>

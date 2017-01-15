@@ -1,0 +1,33 @@
+﻿@model DeerTier.Web.Models.MessagePageViewModel
+
+@{
+    ViewBag.Title = "SignUp";
+}
+
+<div id="signUp">
+    <h1>Sign Up</h1>
+    <br />
+
+    @using (Html.BeginForm())
+    {
+        <div class="loginSignUpForm">
+            Username:
+            <input type="text" name="username" maxlength="100" />
+            <br />
+            Password:
+            <input type="password" name="password" />
+            <br />
+            Confirm password:
+            <input type="password" name="confirmedPassword" />
+            <br />
+        </div>
+        
+        <input class="genericButton" type="submit" value="Submit" />
+        
+    }
+    
+    <div class="statusLiteral">
+        @Model.Message
+    </div>
+    <br />
+</div>

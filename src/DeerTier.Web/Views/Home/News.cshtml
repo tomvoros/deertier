@@ -1,0 +1,187 @@
+﻿@model DeerTier.Web.Models.PageViewModel
+
+@{
+    ViewBag.Title = "News";
+}
+
+<div class="newsPage">
+    <h2>News</h2>
+
+    <div class="newsPost">
+        <ul class="newsMeta">
+            <li class="newsDate">December 23, 2016</li>
+            <li class="newsAuthor"><img src="~/Images/phantoon.png" /> phantomsnake</li>
+        </ul>
+        <div class="newsBody">
+            <p>
+                Site changes:
+            </p>
+            <ul>
+                <li>Added links to the wiki page for each category</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="newsPost">
+        <ul class="newsMeta">
+            <li class="newsDate">December 22, 2016</li>
+            <li class="newsAuthor"><img src="~/Images/phantoon.png" /> phantomsnake</li>
+        </ul>
+        <div class="newsBody">
+            <p>
+                Site changes:
+            </p>
+            <ul>
+                <li>Improved error logging</li>
+                <li>Updated favicon and added icons for various platforms</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="newsPost">
+        <ul class="newsMeta">
+            <li class="newsDate">December 21, 2016</li>
+            <li class="newsAuthor"><img src="~/Images/phantoon.png" /> phantomsnake</li>
+        </ul>
+        <div class="newsBody">
+            <p>
+                Site changes:
+            </p>
+            <ul>
+                <li>Added a max length on some textboxes to prevent errors</li>
+                <li>More code and schema refactoring behind the scenes (working towards open source)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="newsPost">
+        <ul class="newsMeta">
+            <li class="newsDate">December 17, 2016</li>
+            <li class="newsAuthor"><img src="~/Images/phantoon.png" /> phantomsnake</li>
+        </ul>
+        <div class="newsBody">
+            <p>
+                Site changes:
+            </p>
+            <ul>
+                <li>Rehashed all password for added security (they were hashed with MD5 before, now they are salted and hashed with SHA-1)</li>
+                <li>More code and schema refactoring behind the scenes (working towards open source)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="newsPost">
+        <ul class="newsMeta">
+            <li class="newsDate">December 16, 2016</li>
+            <li class="newsAuthor"><img src="~/Images/phantoon.png" /> phantomsnake</li>
+        </ul>
+        <div class="newsBody">
+            <p>
+                Site changes:
+            </p>
+            <ul>
+                <li>Improved authentication security</li>
+                <li>Fixed encoding issue when there's an error</li>
+                <li>Added some logging</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="newsPost">
+        <ul class="newsMeta">
+            <li class="newsDate">December 15, 2016</li>
+            <li class="newsAuthor"><img src="~/Images/phantoon.png" /> phantomsnake</li>
+        </ul>
+        <div class="newsBody">
+            <p>
+                Site changes:
+            </p>
+            <ul>
+                <li>Allow moderators to manage records for non-registered users to help keep things in sync with SRC</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="newsPost">
+        <ul class="newsMeta">
+            <li class="newsDate">December 10, 2016</li>
+            <li class="newsAuthor"><img src="~/Images/phantoon.png" /> phantomsnake</li>
+        </ul>
+        <div class="newsBody">
+            <p>
+                Site changes:
+            </p>
+            <ul>
+                <li>Added polls on homepage</li>
+                <li>Fixed authentication bug</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="newsPost">
+        <ul class="newsMeta">
+            <li class="newsDate">December 9, 2016</li>
+            <li class="newsAuthor"><img src="~/Images/phantoon.png" /> phantomsnake</li>
+        </ul>
+        <div class="newsBody">
+            <p>
+                Site changes:
+            </p>
+            <ul>
+                <li>Added Low% Chargeless category</li>
+                <li>Fixed authentication so users will not get signed out constantly</li>
+                <li>More code and schema refactoring behind the scenes (working towards open source)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="newsPost">
+        <ul class="newsMeta">
+            <li class="newsDate">December 4, 2016</li>
+            <li class="newsAuthor"><img src="~/Images/phantoon.png" /> phantomsnake</li>
+        </ul>
+        <div class="newsBody">
+            <p>
+                Site changes:
+            </p>
+            <ul>
+                <li>Moved past news to a separate page and added a link on the homepage</li>
+                <li>Replaced IRC info with a link to the Discord server</li>
+                <li>Display RBO as Reverse Boss Order in page heading</li>
+                <li>Added section heading on leaderboard pages (so you can distinguish between Any% major glitches and Any% no major glitches, for example)</li>
+                <li>Cleaned up a bunch of the code (working towards open source)</li>
+                <li>Quick fix for mobile layout</li>
+                <li>Added support for hidden mods</li>
+                <li>Added ability for mods to submit times for other users (this will help with the transition to SRC)</li>
+                <li>Added a simple API method to <a href="/api/records">get all records</a> as JSON</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="newsPost">
+        <ul class="newsMeta">
+            <li class="newsDate">November 25, 2016</li>
+            <li class="newsAuthor"><img src="~/Images/phantoon.png" /> phantomsnake</li>
+        </ul>
+        <div class="newsBody">
+            <p>
+                The category structure has been updated again, the Zebes Escape category has been removed (it had no submissions anyway), and
+                the homepage has been updated slightly.
+            </p>
+        </div>
+    </div>
+
+    <div class="newsPost">
+        <ul class="newsMeta">
+            <li class="newsDate">November 19, 2016</li>
+            <li class="newsAuthor"><img src="~/Images/phantoon.png" /> phantomsnake</li>
+        </ul>
+        <div class="newsBody">
+            <p>
+                Hello, I'm MrLandmaster's brother! He doesn't have as much time to work on Deer Tier these days so I'll be taking over most of the development work.
+                We started by implementing a new two-level category structure, along with some improvements to the data schema behind the scenes.
+                If you find any bugs please send them to support (at) deertier (dot) com. More improvements coming down the line!
+            </p>
+        </div>
+    </div>
+</div>

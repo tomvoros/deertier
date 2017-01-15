@@ -1,0 +1,124 @@
+﻿@model DeerTier.Web.Models.LeaderboardPageViewModel
+
+@{
+    ViewBag.Title = Model.Category.FullName;
+}
+
+@if(Model.IsModerator)
+{
+    <script src="@Url.Content("~/Scripts/moderator.js?v=1")" type="text/javascript"></script>
+}
+
+<div class="tableTitleBar">
+    <div class="tableTitleContainer">
+        <h1>@Model.Heading</h1>
+        <h2>@Model.SectionHeading</h2>
+    </div>
+
+    <div class="submitButtonContainer">
+        @if (!string.IsNullOrEmpty(Model.Category.WikiUrl))
+        {
+            <a class="wikiLink" href="@Model.Category.WikiUrl" target="_blank">Category Wiki<i class="fa fa-external-link" aria-hidden="true"></i></a>
+        }
+        <a class="genericButton" href="/Leaderboard/@Model.Category.UrlName/Submit">Submit Time</a>
+    </div>
+</div>
+
+@if (Model.SiblingCategories != null)
+{
+    <div class="siblingCategories">
+        <ol>
+            @foreach (var category in Model.SiblingCategories)
+            {
+                var classAttribute = category == Model.Category ? " class=\"selected\"" : "";
+                <li><a href="@category.LinkUrl"@Html.Raw(classAttribute)>@category.Name</a></li>
+            }
+        </ol>
+    </div>
+}
+
+<div class="scoreTable">
+    <table class="defaultTable">
+        <tr>
+            <th class="rankColumn">
+                Rank
+            </th>
+            <th class="playerColumn">
+                Player
+            </th>
+            @if (Model.Category.GameTime)
+            {
+                <th class="gameTimeColumn">
+                    Game Time
+                </th>
+            }
+            @if (Model.Category.RealTime)
+            {
+                <th class="realTimeColumn">
+                    Real Time
+                </th>
+            }
+            @if (Model.Category.EscapeGameTime)
+            {
+                <th class="escapeGameTimeColumn">
+                    Time
+                </th>
+            }
+            <th class="proofColumn">
+                Video
+            </th>
+            <th class="">
+                Comment
+            </th>
+            @if (Model.IsModerator)
+            {
+                <th class="moderatorDeleteColumn">
+                    Delete
+                </th>
+            }
+        </tr>
+
+        @foreach (var record in Model.Records)
+        {
+            <tr title="@record.DateSubmittedAsString">
+                <td>
+                    @record.Rank
+                </td>
+                <td class="playerName">
+                    @record.Player
+                </td>
+                @if (Model.Category.GameTime)
+                {
+                    <td>
+                        @record.FormattedGameTime
+                    </td>
+                }
+                @if (Model.Category.RealTime)
+                {
+                    <td>
+                        @record.FormattedRealTime
+                    </td>
+                }
+                @if (Model.Category.EscapeGameTime)
+                {
+                    <td>
+                        @record.FormattedEscapeGameTime
+                    </td>
+                }
+                <td class="videoLink">
+                    @Html.Raw(record.VideoURLAsLink)
+                </td>
+                <td>
+                    @Html.Raw(record.HtmlComment)
+                </td>
+                @if (Model.IsModerator)
+                {
+                    <td class="delete">
+                        <a href="javascript:void(0)" data-id="@record.Id">&#10005;</a>
+                    </td>
+                }
+            </tr>              
+        }
+
+    </table>
+</div>

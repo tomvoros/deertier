@@ -1,0 +1,34 @@
+﻿@model IEnumerable<string>
+
+@{
+    Layout = null;
+}
+
+<html>
+    <head>
+        <title>Manage Moderators</title>
+    </head>
+    <body>
+        <h2>Manage Moderators</h2>
+
+        @using (Html.BeginForm())
+        {
+            <div class="loginSignUpForm">
+                Action:
+                <select name="modOrDemod">
+                    <option value="mod" selected>Mod</option>
+                    <option value="de-mod">De-mod</option>
+                </select>
+                Username:
+                <select name="username">
+                    @foreach (string username in Model)
+                    {
+                        <option>@username</option>
+                    }
+                </select>
+            </div><br />
+
+            <input class="genericButton" type="submit" value="Submit" />
+        }
+    </body>
+</html>

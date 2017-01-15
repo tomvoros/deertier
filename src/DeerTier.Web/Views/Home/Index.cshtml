@@ -1,0 +1,126 @@
+﻿@model DeerTier.Web.Models.HomePageViewModel
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<div id="mainPageContent">
+    <div class="title">
+        <h1>Welcome, Super Metroid Speedrunners!</h1>
+    </div>
+
+    <div class="japaneseTitle">
+        ようこそ、日本のスーパーメトロイドスピードラナーズ!
+    </div>
+
+    @if (MvcApplication.IsPreviewSite)
+    {
+        <div id="previewChanges" class="mainPageSection">
+            <h2 class="title">Preview changes</h2>
+            <br/>
+            <ul>
+                <li>Nothing yet</li>
+            </ul>
+            <br/>
+            <h2 class="title">Planned changes</h2>
+            <br />
+            <ul>
+                <li>Fix up code and data in preparation for open sourcing Deer Tier</li>
+                <li>Add different view options for NMG Low%</li>
+                <li>Integrate with spreedrun.com</li>
+                <li>Table column sorting</li>
+                <li>Fix up site CSS in general</li>
+                <li>Improve mobile site CSS (starzonmyarmz has offered to assist)</li>
+                <li>More category changes? Related discussion <a href="http://deanyd.net/sm/index.php?title=Leaderboard_Layout_Suggestions" target="_blank">here</a></li>
+            </ul>
+        </div>
+    }
+
+    <br />
+    Hello and welcome to <b>Deer Tier</b>! The aim of this site is to showcase the
+    best of the best in the <b>Super Metroid</b> speedrunning community. Submit your records and see how you stack up against your fellow speedrunners!
+    <br/><br/>
+    
+    If you wish to play any category on emulator, <span class="link"><a href="http://byuu.org/emulation/higan/">higan</a></span> is the recommended emulator to use.
+    Times should also follow
+    <span class="link"><a href="http://speedrunslive.com/" target="_blank">SpeedRunsLive</a></span> conventions. To quote the rules, this means:
+    <br /><br />
+
+    <div class="quoteContainer">
+        <div class="quote">
+            <ul>
+                <li>All files ... should start at 0:00 with the intro sequence completed so play begins in the Ceres station.</li>
+                <li>SNES9x 1.43 and ZSNES are banned.</li>
+                <li>Save the critters at your own discretion.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <br />
+
+
+    In addition, the leaderboards operate on the honour system. Please do not attempt to pass off fake records as your own. 
+    If any times look suspicious, they may be removed. The best way to establish credibility is to hang out and race with the 
+    <a href="http://speedrunslive.com/gamelist/#!/supermetroid/1" target="_blank"><span class="link">SRL Super Metroid community</span></a>. 
+    With that said, enjoy the competition! Will you ascend to <span class="deerTierFont">Deer Tier?</span>
+
+    <div class="mainPageSection pollsSection">
+        <h2 class="title">Polls</h2>
+        
+        <div class="pollsDescription">
+            Help us make decisions about the future of Deer Tier!
+        </div>
+
+        <iframe src="http://www.strawpoll.me/embed_1/11839006" style="width:650px;height:695px;border:0;margin-bottom:15px;">Loading poll...</iframe>
+
+        <p>
+            There was some concern that the previous poll for <a href="http://deanyd.net/sm/index.php?title=14%25_Chargeless" target="_blank">Low% Chargeless</a>
+            was too easy to mess with so we're redoing it with Straw Poll. If you voted on the previous poll you can go ahead and vote again.
+        </p>
+
+        <br />
+
+        <iframe src="http://www.strawpoll.me/embed_1/11889639" style="width:650px;height:735px;border:0;">Loading poll...</iframe>
+    </div>
+
+    <div class="mainPageSection newsSection">
+        <h2 class="title">News</h2>
+        
+        <div class="newsPost">
+            <ul class="newsMeta">
+                <li class="newsDate">December 23, 2016</li>
+                <li class="newsAuthor"><img src="~/Images/phantoon.png" /> phantomsnake</li>
+            </ul>
+            <div class="newsBody">
+                <p>
+                    Site changes:
+                </p>
+                <ul>
+                    <li>Added links to the wiki page for each category</li>
+                </ul>
+            </div>
+        </div>
+        
+        <a href="/News">Past News</a>
+    </div>
+
+    <div class="mainPageSection communitySection">
+        <h2 class="title">Community</h2>
+        <br />
+        <p>
+            Check out <a href="http://deanyd.net/sm/index.php?title=Main_Page" target="_blank" class="link">the deanyd.net wiki</a></span> for all kinds of great resources on the game, including the full <a href="http://deanyd.net/sm/index.php?title=Categories" target="_blank" class="link">list of categories</a>.
+            This includes inactive categories that may be retired from Deer Tier.
+        </p>
+        <br/>
+        <p>
+            You can also join our <a href="https://discord.gg/jGBp7aA" target="_blank" class="link"><img src="~/Images/discord.png" /></a> server and chat with other Super Metroid speedrunners.
+        </p>
+    </div>
+
+    <div class="mainPageSection">
+        <h2 class="title">Moderators</h2>
+        <br />
+
+        Your moderators are <b>@Model.FormattedModerators</b>. If you have any questions about the times you or anyone else has submitted, please feel free to contact any of them in the #supermetroid channel on our <a href="https://discord.gg/jGBp7aA" target="_blank" class="link">Discord</a> server.
+    </div>
+</div>

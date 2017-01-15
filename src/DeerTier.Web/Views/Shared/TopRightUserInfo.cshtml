@@ -1,0 +1,14 @@
+﻿@model DeerTier.Web.Models.PageViewModel
+
+@if (Model.IsAuthenticated)
+{
+    <span>Welcome, <a href="~/Account/ChangePassword">@Model.Username</a></span>
+    <span> | </span>
+    <a href="~/Account/LogOut?url=@(Request.Url.PathAndQuery)">Log Out</a>
+}
+else
+{
+    <a href="~/Account/LogIn">Log In</a>
+    <span> | </span>
+    <a href="~/Account/SignUp">Sign Up</a>
+}

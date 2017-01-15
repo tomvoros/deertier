@@ -1,0 +1,59 @@
+﻿@model DeerTier.Web.Models.SubmitTimePageViewModel
+
+@{
+    ViewBag.Title = "Submit Time";
+}
+
+<div id="addTime">
+    <div class="addTimeTitle">
+        Add Time: @Model.Category.FullName
+    </div>
+
+    <br />
+
+    @using(Html.BeginForm())
+    {
+        <div class="addTimeForm">
+            @if (Model.Category.GameTime)
+            {
+                @:Game time: (e.g. 00:41)<br />
+                <input type="text" class="addTimeTextField" name="gameTime" /><br />
+            }
+
+            @if (Model.Category.EscapeGameTime)
+            {
+                @:Ceres time: (e.g. 42'33)<br />
+                <input type="text" class="addTimeTextField" name="escapeGameTime" /><br />
+            }
+
+            @if (Model.Category.RealTime)
+            {
+                @:Real time: (e.g. 1:01:50 or 57:44)<br />
+                <input type="text" class="addTimeTextField" name="realTime" /><br />
+            }
+            
+            Video URL:<br />
+            <input type="text" class="videoLinkTextField" name="videoLink" maxlength="100" /><br />
+
+            Comment:<br />
+            <input type="text" class="commentTextField" name="comment" maxlength="100" /><br />
+
+            @if (Model.IsModerator)
+            {
+                @:Submit time as another user (enter username)<br />
+                <input type="text" class="usernameTextField" name="username" maxlength="100" /><br />
+            }
+        </div>
+
+        <input class="genericButton" type="submit" value="Submit" />
+    }
+    
+    @{if (Model.ErrorMessage != null)
+      {
+        <div class="statusLiteral">
+            @Model.ErrorMessage
+        </div>  
+      }  
+    }
+
+</div>
