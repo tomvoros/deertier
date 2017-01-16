@@ -27,22 +27,23 @@ namespace DeerTier.Web.Controllers
             return View(usernames);
         }
 
-        [HttpPost]
-        public ActionResult Moderators(string modOrDemod, string username)
-        {
-            var content = "no action taken";
+        // TODO: secure this
+        //[HttpPost]
+        //public ActionResult Moderators(string modOrDemod, string username)
+        //{
+        //    var content = "no action taken";
             
-            if (modOrDemod == "mod")
-            {
-                content = (AccountService.ModUser(username) ? (username + " successfully modded") : ("error modding " + username));
-            }
-            else if (modOrDemod == "de-mod")
-            {
-                content = (AccountService.DeModUser(username) ? (username + " successfully de-modded") : ("error de-modding " + username));
-            }
+        //    if (modOrDemod == "mod")
+        //    {
+        //        content = (AccountService.ModUser(username) ? (username + " successfully modded") : ("error modding " + username));
+        //    }
+        //    else if (modOrDemod == "de-mod")
+        //    {
+        //        content = (AccountService.DeModUser(username) ? (username + " successfully de-modded") : ("error de-modding " + username));
+        //    }
             
-            return Content(content);
-        }
+        //    return Content(content);
+        //}
 
         [HttpGet]
         public ActionResult ScoreDeletionLog(string adminKey)
