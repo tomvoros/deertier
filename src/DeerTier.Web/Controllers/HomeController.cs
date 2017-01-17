@@ -1,5 +1,6 @@
 ﻿using DeerTier.Web.Models;
 using DeerTier.Web.Services;
+using DeerTier.Web.Utils;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -35,6 +36,7 @@ namespace DeerTier.Web.Controllers
 
             var viewModel = CreateViewModel<HomePageViewModel>();
             viewModel.FormattedModerators = text;
+            viewModel.DiscordUrl = ConfigHelper.DiscordUrl;
 
             return View(viewModel);
         }
