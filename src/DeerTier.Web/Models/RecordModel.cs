@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 
 namespace DeerTier.Web.Models
 {
@@ -20,15 +21,26 @@ namespace DeerTier.Web.Models
         public DateTime? DateSubmitted { get; set; }
 
         public int Rank { get; set; }
+
         public string VideoURLAsLink
         {
             get
             {
-                if (string.IsNullOrWhiteSpace(this.VideoURL))
+                if (string.IsNullOrWhiteSpace(VideoURL))
                 {
                     return "";
                 }
-                return "<a href=\"" + VideoURL + "\" target=\"_blank\">Watch</a>";
+
+                // Ensure the URL is not relative
+                var url = VideoURL.Trim();
+                if (!url.StartsWith("http://", StringComparison.InvariantCultureIgnoreCase) &&
+                    !url.StartsWith("https://", StringComparison.InvariantCultureIgnoreCase) &&
+                    !url.StartsWith("//"))
+                {
+                    url = "http://" + url;
+                }
+
+                return "<a href=\"" + HttpUtility.HtmlAttributeEncode(url) + "\" target=\"_blank\">Watch</a>";
             }
         }
 
