@@ -22,6 +22,12 @@ namespace DeerTier.Web
             );
 
             routes.MapRoute(
+                name: "SpeedrunComLeaderboard",
+                url: "Leaderboard/{categoryUrlName}/SpeedrunCom",
+                defaults: new { controller = "SpeedrunComLeaderboard", action = "Index" }
+            );
+
+            routes.MapRoute(
                 name: "Leaderboard",
                 url: "Leaderboard/{categoryUrlName}",
                 defaults: new { controller = "Leaderboard", action = "Index" }

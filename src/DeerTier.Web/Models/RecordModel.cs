@@ -8,9 +8,7 @@ namespace DeerTier.Web.Models
         public int Id { get; set; }
         public string Player { get; set; }
         public int RealTimeSeconds { get; set; }
-        public string RealTimeString { get; set; }
         public int GameTimeSeconds { get; set; }
-        public string GameTimeString { get; set; }
         public string Comment { get; set; }
         public string VideoURL { get; set; }
         public float CeresTime { get; set; }

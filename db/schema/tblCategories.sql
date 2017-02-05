@@ -20,7 +20,8 @@ CREATE TABLE [deertier].[tblCategories](
 	[RealTime] [bit] NOT NULL,
 	[ShortName] [nvarchar](200) NULL,
 	[Enabled] [bit] NOT NULL,
-	[WikiUrl] [nvarchar](200) NULL
+	[WikiUrl] [nvarchar](200) NULL,
+	[SpeedrunComCategoryId] [nvarchar](100) NULL
 ) ON [PRIMARY]
 
 GO

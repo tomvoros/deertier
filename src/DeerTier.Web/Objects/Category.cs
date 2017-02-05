@@ -22,6 +22,7 @@ namespace DeerTier.Web.Objects
         public bool RealTime { get; set; }
         public string ShortName { get; set; }
         public string WikiUrl { get; set; }
+        public string SpeedrunComCategoryId { get; set; }
 
         [NotMapped]
         public Section Section { get; set; }
