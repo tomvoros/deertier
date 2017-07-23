@@ -1,5 +1,7 @@
 # deertier
 
+[![ghit.me](https://ghit.me/badge.svg?repo=tomvoros/deertier)](https://ghit.me/repo/tomvoros/deertier)
+
 This repository contains the code and DB schema/data for deertier.com.
 
 ## Website
