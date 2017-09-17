@@ -132,6 +132,8 @@
     <Content Include="Images\FrankerZ.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\phantoon.png" />
+    <Content Include="Images\Poll1.png" />
+    <Content Include="Images\Poll2.png" />
     <Content Include="Images\purple_stars.jpg" />
     <Content Include="Images\purple_stars2.jpg" />
     <Content Include="Images\right_arrow_24x24.png" />
