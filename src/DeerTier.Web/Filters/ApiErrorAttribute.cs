@@ -1,4 +1,5 @@
 ﻿using DeerTier.Web.Utils;
+using System.Net;
 using System.Web.Mvc;
 
 namespace DeerTier.Web.Filters
@@ -13,13 +14,16 @@ namespace DeerTier.Web.Filters
             }
 
             var exception = filterContext.Exception as ApiException;
-            if (exception == null)
+            if (exception != null)
             {
-                exception = new ApiException("API exception", filterContext.Exception);
+                // Return error from exception
+                filterContext.Result = new HttpStatusCodeResult(exception.StatusCode, exception.Message);
             }
-
-            // Return a sanitized error result
-            filterContext.Result = new HttpStatusCodeResult(exception.StatusCode, exception.Message);
+            else
+            {
+                // Return a generic error
+                filterContext.Result = new HttpStatusCodeResult(HttpStatusCode.InternalServerError, "API Exception");
+            }
         }
     }
 }
