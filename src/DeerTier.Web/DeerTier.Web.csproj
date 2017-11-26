@@ -163,6 +163,8 @@
     <Compile Include="Data\DbConnectionProvider.cs" />
     <Compile Include="Data\IDbConnectionProvider.cs" />
     <Compile Include="Data\ModerationRepository.cs" />
+    <Compile Include="Filters\ApiAuthorizeAttribute.cs" />
+    <Compile Include="Filters\ApiErrorAttribute.cs" />
     <Compile Include="Filters\ErrorLoggingFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -193,7 +195,9 @@
     <Compile Include="Data\LeaderboardRepository.cs" />
     <Compile Include="Services\LeaderboardService.cs" />
     <Compile Include="Services\ModerationService.cs" />
+    <Compile Include="Utils\ApiException.cs" />
     <Compile Include="Utils\ConfigHelper.cs" />
+    <Compile Include="Utils\RecordUtil.cs" />
     <Compile Include="Utils\TimeUtil.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -36,7 +36,22 @@ namespace DeerTier.Web
             routes.MapRoute(
                 name: "Api/GetAllRecords",
                 url: "api/records",
-                defaults: new { controller = "Api", action = "GetAllRecords" }
+                defaults: new { controller = "Api", action = "GetAllRecords" },
+                constraints: new { httpMethod = new HttpMethodConstraint("GET") }
+            );
+
+            routes.MapRoute(
+                name: "Api/SubmitRecord",
+                url: "api/records",
+                defaults: new { controller = "Api", action = "SubmitRecord" },
+                constraints: new { httpMethod = new HttpMethodConstraint("POST") }
+            );
+
+            routes.MapRoute(
+                name: "Api/DeleteRecord",
+                url: "api/records/{id}",
+                defaults: new { controller = "Api", action = "DeleteRecord" },
+                constraints: new { httpMethod = new HttpMethodConstraint("DELETE") }
             );
 
             routes.MapRoute(

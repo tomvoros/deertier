@@ -73,7 +73,7 @@ namespace DeerTier.Web.Controllers
 
         public UserContext UserContext => _userContext.Value;
 
-        private User GetUser()
+        protected virtual User GetUser()
         {
             var baseUser = base.User;
             if (baseUser != null && baseUser.Identity != null && baseUser.Identity.IsAuthenticated && !string.IsNullOrWhiteSpace(baseUser.Identity.Name))
