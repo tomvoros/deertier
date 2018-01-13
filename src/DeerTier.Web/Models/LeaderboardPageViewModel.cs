@@ -6,6 +6,7 @@
         public string Heading { get; set; }
         public CategoryModel[] SiblingCategories { get; set; }
         public CategoryModel Category { get; set; }
+        public bool HideRecordsWithoutVideo { get; set; }
         public RecordModel[] Records { get; set; }
     }
 }

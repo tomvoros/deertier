@@ -24,7 +24,7 @@ namespace DeerTier.Web.Controllers
         }
         
         [HttpGet]
-        public ActionResult Index(string categoryUrlName)
+        public ActionResult Index(string categoryUrlName, int hideRecordsWithoutVideo = 0)
         {
             var category = CategoryService.GetCategoryByUrlName(categoryUrlName);
 
@@ -37,6 +37,7 @@ namespace DeerTier.Web.Controllers
 
             var viewModel = CreateViewModel<LeaderboardPageViewModel>();
             viewModel.Category = categoryModel;
+            viewModel.HideRecordsWithoutVideo = hideRecordsWithoutVideo == 1;
 
             if (category.Parent != null)
             {
@@ -52,7 +53,7 @@ namespace DeerTier.Web.Controllers
                 viewModel.Heading = category.Name;
             }
             
-            IEnumerable<Record> records = _leaderboardService.GetRecords(category.Id);
+            IEnumerable<Record> records = _leaderboardService.GetRecords(category.Id, viewModel.HideRecordsWithoutVideo);
              
             if (category.GameTime && category.RealTime)
             {

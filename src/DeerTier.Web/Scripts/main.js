@@ -9,6 +9,14 @@
         var $navSection = $(navSection);
         NavSlider.slideToggle($expander, $navSection);
     });
+
+    $("#hideRecordsWithoutVideo").on("change", function () {
+        var url = location.pathname;
+        if ($(this).is(":checked")) {
+            url += "?hideRecordsWithoutVideo=1";
+        }
+        location.href = url;
+    });
 });
 
 var NavSlider = {

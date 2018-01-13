@@ -721,6 +721,25 @@ textarea
     color: #EEEFF7;
 }
 
+.tableFilters
+{
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    color: #ccc;
+    background: #0f0f10;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.tableFilters *
+{
+    vertical-align: middle;
+}
+
+.tableFilters label
+{
+    padding-left: 5px;
+}
+
 .siblingCategories
 {
     margin-bottom: 10px;

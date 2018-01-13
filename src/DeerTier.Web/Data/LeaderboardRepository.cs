@@ -115,11 +115,18 @@ SELECT * FROM tblCategories WHERE Enabled = 1 ORDER BY ID
             }
         }
 
-        public Record[] GetRecords(int categoryId)
+        public Record[] GetRecords(int categoryId, bool excludeRecordsWithoutVideo = false)
         {
             using (var conn = _connectionProvider.GetConnection())
             {
-                return conn.Query<Record>("SELECT * FROM tblRecords WHERE CategoryId = @CategoryId", new { CategoryId = categoryId }).ToArray();
+                var sql = "SELECT* FROM tblRecords WHERE CategoryId = @CategoryId";
+
+                if (excludeRecordsWithoutVideo)
+                {
+                    sql += " AND VideoURL <> ''";
+                }
+
+                return conn.Query<Record>(sql, new { CategoryId = categoryId }).ToArray();
             }
         }
 

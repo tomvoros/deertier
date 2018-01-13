@@ -24,6 +24,11 @@
     </div>
 </div>
 
+<div class="tableFilters">
+    <input id="hideRecordsWithoutVideo" type="checkbox" @Html.Raw(Model.HideRecordsWithoutVideo ? "checked=\"checked\"" : "")/>
+    <label for="hideRecordsWithoutVideo">Hide records without video</label>
+</div>
+
 @if (Model.SiblingCategories != null)
 {
     <div class="siblingCategories">

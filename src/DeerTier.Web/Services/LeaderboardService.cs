@@ -21,9 +21,9 @@ namespace DeerTier.Web.Services
             return _leaderboardRepository.GetRecord(id);
         }
 
-        public Record[] GetRecords(int categoryId)
+        public Record[] GetRecords(int categoryId, bool excludeRecordsWithoutVideo = false)
         {
-            return _leaderboardRepository.GetRecords(categoryId);
+            return _leaderboardRepository.GetRecords(categoryId, excludeRecordsWithoutVideo);
         }
 
         public void AddRecord(UserContext context, Record record, bool isModeratorAction)
