@@ -44,93 +44,96 @@
 
 <div class="scoreTable">
     <table class="defaultTable">
-        <tr>
-            <th class="rankColumn">
-                Rank
-            </th>
-            <th class="playerColumn">
-                Player
-            </th>
-            @if (Model.Category.GameTime)
-            {
-                <th class="gameTimeColumn">
-                    Game Time
+        <thead>
+            <tr>
+                <th class="rankColumn sorting_asc">
+                    Rank
                 </th>
-            }
-            @if (Model.Category.RealTime)
-            {
-                <th class="realTimeColumn">
-                    Real Time
+                <th class="playerColumn">
+                    Player
                 </th>
-            }
-            @if (Model.Category.EscapeGameTime)
-            {
-                <th class="escapeGameTimeColumn">
-                    Time
-                </th>
-            }
-            <th class="proofColumn">
-                Video
-            </th>
-            <th class="commentColumn">
-                Comment
-            </th>
-            <th class="dateSubmittedColumn">
-                Date
-            </th>
-            @if (Model.IsModerator)
-            {
-                <th class="moderatorDeleteColumn">
-                    Delete
-                </th>
-            }
-        </tr>
-
-        @foreach (var record in Model.Records)
-        {
-            var rankClass = record.RankClass != null ? $" class=\"{record.RankClass}\"" : "";
-            <tr@(Html.Raw(rankClass))>
-                <td>
-                    @record.Rank
-                </td>
-                <td class="playerName">
-                    @record.Player
-                </td>
                 @if (Model.Category.GameTime)
                 {
-                    <td>
-                        @record.FormattedGameTime
-                    </td>
+                    <th class="gameTimeColumn">
+                        Game Time
+                    </th>
                 }
                 @if (Model.Category.RealTime)
                 {
-                    <td>
-                        @record.FormattedRealTime
-                    </td>
+                    <th class="realTimeColumn">
+                        Real Time
+                    </th>
                 }
                 @if (Model.Category.EscapeGameTime)
                 {
-                    <td>
-                        @record.FormattedEscapeGameTime
-                    </td>
+                    <th class="escapeGameTimeColumn">
+                        Time
+                    </th>
                 }
-                <td class="videoLink">
-                    @Html.Raw(record.VideoURLAsLink)
-                </td>
-                <td class="comment">
-                    @Html.Raw(record.HtmlComment)
-                </td>
-                <td>
-                    @record.DateSubmittedAsString
-                </td>
+                <th class="proofColumn nosort">
+                    Video
+                </th>
+                <th class="commentColumn nosort">
+                    Comment
+                </th>
+                <th class="dateSubmittedColumn">
+                    Date
+                </th>
                 @if (Model.IsModerator)
                 {
-                    <td class="delete">
-                        <a href="javascript:void(0)" data-id="@record.Id">&#10005;</a>
-                    </td>
+                    <th class="moderatorDeleteColumn nosort">
+                        Delete
+                    </th>
                 }
-            </tr@(record.RankClass)>              
-        }
+            </tr>
+        </thead>
 
+        <tbody>
+            @foreach (var record in Model.Records)
+            {
+                var rankClass = record.RankClass != null ? $" class=\"{record.RankClass}\"" : "";
+                <tr@(Html.Raw(rankClass))>
+                    <td>
+                        @record.Rank
+                    </td>
+                    <td class="playerName">
+                        @record.Player
+                    </td>
+                    @if (Model.Category.GameTime)
+                    {
+                        <td>
+                            @record.FormattedGameTime
+                        </td>
+                    }
+                    @if (Model.Category.RealTime)
+                    {
+                        <td>
+                            @record.FormattedRealTime
+                        </td>
+                    }
+                    @if (Model.Category.EscapeGameTime)
+                    {
+                        <td>
+                            @record.FormattedEscapeGameTime
+                        </td>
+                    }
+                    <td class="videoLink">
+                        @Html.Raw(record.VideoURLAsLink)
+                    </td>
+                    <td class="comment">
+                        @Html.Raw(record.HtmlComment)
+                    </td>
+                    <td>
+                        @record.DateSubmittedAsString
+                    </td>
+                    @if (Model.IsModerator)
+                    {
+                        <td class="delete">
+                            <a href="javascript:void(0)" data-id="@record.Id">&#10005;</a>
+                        </td>
+                    }
+                </tr@(record.RankClass)>              
+            }
+        </tbody>
     </table>
 </div>

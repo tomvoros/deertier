@@ -96,6 +96,38 @@ th
     padding: 2px 5px;
 }
 
+th.sorting,
+th.sorting_asc,
+th.sorting_desc
+{
+    cursor: pointer;
+}
+
+th.sorting_asc::after,
+th.sorting_desc::after
+{
+    font-size: 10px;
+    vertical-align: middle;
+    color: #a076e0;
+}
+
+th.sorting_asc::after
+{
+    content: "\25BC";
+}
+
+th.sorting_desc::after
+{
+    content: "\25B2";
+}
+
+th.sorting:hover,
+th.sorting_asc:hover,
+th.sorting_desc:hover
+{
+    background-color: #824FD1;
+}
+
 td
 {
     word-break: break-word;

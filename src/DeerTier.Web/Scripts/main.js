@@ -1,4 +1,17 @@
 ﻿$(document).ready(function () {
+    $(".defaultTable").DataTable(
+    {
+        "paging": false,
+        "info": false,
+        "searching": false,
+        "stripeClasses": [],
+        "columnDefs": [{
+            "targets": "nosort",
+            "orderable": false
+        }]
+    });
+
+
     if ($('#scoreDeletionLog').length) {
         $('#scoreDeletionLog').DataTable();
     }

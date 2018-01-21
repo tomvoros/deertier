@@ -142,7 +142,8 @@
     <Content Include="Images\tournament.png" />
     <Content Include="mstile-150x150.png" />
     <Content Include="safari-pinned-tab.svg" />
-    <Content Include="Scripts\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery.dataTables-1.10.16.min.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\moderator.js" />
     <Content Include="Web.config">
