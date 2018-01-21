@@ -67,22 +67,32 @@ table
 td.videoLink a
 {
     color: inherit !important;
-    padding: 0 15px;
+}
+
+td.videoLink a i
+{
+    padding: 3px 13px;
 }
 
 td.videoLink a:hover
 {
-    color: #8B54DE !important;
+    color: white !important;
+}
+
+td.videoLink a:hover i
+{
+    background: #8B54DE;
+    border-radius: 5px;
 }
 
 td.videoLink a:hover i.fa-twitch
 {
-    color: #6441a4 !important;
+    background: #6441a4;
 }
 
 td.videoLink a:hover i.fa-youtube-play
 {
-    color: #ff0000 !important;
+    background: #ff0000;
 }
 
 tbody tr:nth-child(odd) { background-color: #222; /*zebra print light grey*/}
@@ -104,6 +114,7 @@ th
     background-color: #5A3791;
     white-space: nowrap;
     padding: 2px 5px;
+    height: 22px;
 }
 
 th.sorting,
@@ -143,6 +154,7 @@ td
     word-break: break-word;
     overflow-wrap: break-word;
     padding: 2px 5px;
+    height: 22px;
 }
 
 a, a:visited
