@@ -38,7 +38,23 @@ namespace DeerTier.Web.Models
                     url = "http://" + url;
                 }
 
-                return "<a href=\"" + HttpUtility.HtmlAttributeEncode(url) + "\" target=\"_blank\"><i class=\"fa fa-video-camera\" aria-hidden=\"true\"></i></a>";
+                var icon = "fa-video-camera";
+
+                Uri uri;
+                if (Uri.TryCreate(url, UriKind.Absolute, out uri))
+                {
+                    var host = uri.Host.ToLowerInvariant();
+                    if (host.EndsWith("twitch.tv"))
+                    {
+                        icon = "fa-twitch";
+                    }
+                    else if (host.EndsWith("youtube.com") || host.EndsWith("youtu.be"))
+                    {
+                        icon = "fa-youtube-play";
+                    }
+                }
+
+                return $"<a href=\"{HttpUtility.HtmlAttributeEncode(url)}\" target=\"_blank\"><i class=\"fa {icon}\" aria-hidden=\"true\"></i></a>";
             }
         }
 

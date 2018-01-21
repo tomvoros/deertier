@@ -75,6 +75,16 @@ td.videoLink a:hover
     color: #8B54DE !important;
 }
 
+td.videoLink a:hover i.fa-twitch
+{
+    color: #6441a4 !important;
+}
+
+td.videoLink a:hover i.fa-youtube-play
+{
+    color: #ff0000 !important;
+}
+
 tbody tr:nth-child(odd) { background-color: #222; /*zebra print light grey*/}
 tbody tr.gold { color: Yellow; /*gold*/ }
 tbody tr.silver { color: #EEEFF7; /*silver*/ }
