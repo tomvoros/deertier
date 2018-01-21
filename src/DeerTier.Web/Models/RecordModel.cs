@@ -40,7 +40,7 @@ namespace DeerTier.Web.Models
                     url = "http://" + url;
                 }
 
-                return "<a href=\"" + HttpUtility.HtmlAttributeEncode(url) + "\" target=\"_blank\">Watch</a>";
+                return "<a href=\"" + HttpUtility.HtmlAttributeEncode(url) + "\" target=\"_blank\"><i class=\"fa fa-video-camera\" aria-hidden=\"true\"></i></a>";
             }
         }
 
@@ -50,9 +50,27 @@ namespace DeerTier.Web.Models
             {
                 if (DateSubmitted.HasValue)
                 {
-                    return string.Format("Submitted by {0} on: {1}", Player, DateSubmitted.Value.ToString("dd/MM/yyyy"));
+                    return DateSubmitted.Value.ToString("dd-MM-yyyy");
                 }
-                return "Submission date unavailable";
+                return "";
+            }
+        }
+
+        public string RankClass
+        {
+            get
+            {
+                switch (Rank)
+                {
+                    case 1:
+                        return "gold";
+                    case 2:
+                        return "silver";
+                    case 3:
+                        return "bronze";
+                    default:
+                        return null;
+                }
             }
         }
     }

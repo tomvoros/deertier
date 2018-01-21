@@ -47,7 +47,7 @@ ul li
 
 table
 {
-    width: 780px;
+    width: 1080px;
     display: inline-table;
     background-color: RGBA(0, 0, 0, 0.1);
     color: Silver;
@@ -61,24 +61,24 @@ table
 .gameTimeColumn { width: 80px; }
 .escapeGameTimeColumn { width: 40px; }
 .proofColumn { width: 90px; }
+.dateSubmittedColumn { width: 130px; }
 .moderatorDeleteColumn { width: 50px; }
 
 td.videoLink a
 {
     color: inherit !important;
-    text-decoration: underline;
+    padding: 0 15px;
 }
 
 td.videoLink a:hover
 {
     color: #8B54DE !important;
-    text-shadow: none;
 }
 
 tbody tr:nth-child(odd) { background-color: #222; /*zebra print light grey*/}
-tbody tr:nth-child(2) { color: Yellow; /*gold*/ }
-tbody tr:nth-child(3) { color: #EEEFF7; /*silver*/ }
-tbody tr:nth-child(4) { color: #FFAF3D; /*bronze*/ }
+tbody tr.gold { color: Yellow; /*gold*/ }
+tbody tr.silver { color: #EEEFF7; /*silver*/ }
+tbody tr.bronze { color: #FFAF3D; /*bronze*/ }
 
 tr:hover
 {
@@ -91,23 +91,16 @@ th
     font-weight: bold;
     color: #EEEFF7;
     text-align: center;
-    /*border-top: 1px solid #B80000; bright red
-    border-bottom: 1px solid #B80000; bright red
-    background-color: #590402; dark red/*/
-    
-    border-top: 1px solid #824FD1;
-    border-bottom: 1px solid #824FD1;
     background-color: #5A3791;
     white-space: nowrap;
+    padding: 2px 5px;
 }
 
 td
 {
-    /*width: 200px;*/
-    text-align: center;
-    border-bottom: 1px solid #666; /*grey*/
     word-break: break-word;
     overflow-wrap: break-word;
+    padding: 2px 5px;
 }
 
 a, a:visited
@@ -178,7 +171,7 @@ a:hover
 #loginContainer
 {
     color: White;
-    width: 1000px;
+    width: 1300px;
     margin: 0 auto;
     position: relative;
 }
@@ -315,7 +308,7 @@ a:hover
 
 #content
 {
-    width: 780px;
+    width: 1080px;
     margin: 0 auto;
     color: #EEEFF7;  /*grey font*/
     padding: 10px 10px 10px 10px;
@@ -496,6 +489,14 @@ textarea
 {
     clear: both;
     text-align: center;
+}
+
+.playerColumn,
+.playerName,
+.commentColumn,
+.comment
+{
+    text-align: left;
 }
 
 .delete a
@@ -773,7 +774,7 @@ textarea
 
 #wrapper
 {
-    width: 1000px;
+    width: 1300px;
     height: 100%;
     margin: 0 auto;
     margin-top: 15px;

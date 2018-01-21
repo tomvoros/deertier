@@ -54,38 +54,60 @@ namespace DeerTier.Web.Controllers
             }
             
             IEnumerable<Record> records = _leaderboardService.GetRecords(category.Id, viewModel.HideRecordsWithoutVideo);
+            IEnumerable<RankedRecord> rankedRecords;
              
             if (category.GameTime && category.RealTime)
             {
                 records = records.OrderBy(r => r.GameTimeSeconds).ThenBy(r => r.RealTimeSeconds).ThenBy(r => r.DateSubmitted);
+                rankedRecords = RankRecords(records, r => $"{r.GameTimeSeconds}|{r.RealTimeSeconds}");
             }
             else if (category.GameTime)
             {
                 records = records.OrderBy(r => r.GameTimeSeconds).ThenBy(r => r.DateSubmitted);
+                rankedRecords = RankRecords(records, r => r.GameTimeSeconds);
             }
             else if (category.EscapeGameTime)
             {
                 records = records.OrderByDescending(r => r.CeresTime).ThenBy(r => r.DateSubmitted);
+                rankedRecords = RankRecords(records, r => r.CeresTime);
             }
             else
             {
                 records = records.OrderBy(r => r.RealTimeSeconds).ThenBy(r => r.DateSubmitted);
+                rankedRecords = RankRecords(records, r => r.RealTimeSeconds);
             }
 
-            viewModel.Records = records
+            viewModel.Records = rankedRecords
                 .Select(r => MapRecord(r, category))
                 .ToArray();
-
-            for (int i = 0; i < viewModel.Records.Length; i++)
-            {
-                viewModel.Records[i].Rank = i + 1;
-            }
-
+            
             return View(viewModel);
         }
-
-        private RecordModel MapRecord(Record record, Category category)
+        
+        // Rank records using standard competitive ranking ("1224" ranking)
+        private IEnumerable<RankedRecord> RankRecords<T>(IEnumerable<Record> records, Func<Record, T> recordRankKey)
         {
+            var rankedRecords = records.Select(r => new RankedRecord(r)).ToArray();
+
+            var rank = 1;
+            var rankGroups = rankedRecords.GroupBy(r => recordRankKey(r.Record));
+            foreach (var rankGroup in rankGroups)
+            {
+                foreach (var rankedRecord in rankGroup)
+                {
+                    rankedRecord.Rank = rank;
+                }
+
+                rank += rankGroup.Count();
+            }
+
+            return rankedRecords;
+        }
+
+        private RecordModel MapRecord(RankedRecord rankedRecord, Category category)
+        {
+            var record = rankedRecord.Record;
+
             var recordModel = new RecordModel
             {
                 Id = record.Id,
@@ -97,7 +119,8 @@ namespace DeerTier.Web.Controllers
                 Comment = record.Comment,
                 VideoURL = record.VideoURL,
                 CeresTime = record.CeresTime,
-                DateSubmitted = record.DateSubmitted
+                DateSubmitted = record.DateSubmitted,
+                Rank = rankedRecord.Rank
             };
 
             if (category.RealTime)

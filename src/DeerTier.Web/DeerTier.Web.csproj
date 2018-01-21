@@ -185,6 +185,7 @@
     <Compile Include="Objects\ModerationActionType.cs" />
     <Compile Include="Objects\ModeratorType.cs" />
     <Compile Include="Objects\PasswordType.cs" />
+    <Compile Include="Objects\RankedRecord.cs" />
     <Compile Include="Objects\Record.cs" />
     <Compile Include="Objects\Section.cs" />
     <Compile Include="Objects\User.cs" />

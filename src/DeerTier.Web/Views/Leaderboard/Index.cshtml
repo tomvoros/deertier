@@ -72,8 +72,11 @@
             <th class="proofColumn">
                 Video
             </th>
-            <th class="">
+            <th class="commentColumn">
                 Comment
+            </th>
+            <th class="dateSubmittedColumn">
+                Date
             </th>
             @if (Model.IsModerator)
             {
@@ -85,7 +88,8 @@
 
         @foreach (var record in Model.Records)
         {
-            <tr title="@record.DateSubmittedAsString">
+            var rankClass = record.RankClass != null ? $" class=\"{record.RankClass}\"" : "";
+            <tr@(Html.Raw(rankClass))>
                 <td>
                     @record.Rank
                 </td>
@@ -113,8 +117,11 @@
                 <td class="videoLink">
                     @Html.Raw(record.VideoURLAsLink)
                 </td>
-                <td>
+                <td class="comment">
                     @Html.Raw(record.HtmlComment)
+                </td>
+                <td>
+                    @record.DateSubmittedAsString
                 </td>
                 @if (Model.IsModerator)
                 {
@@ -122,7 +129,7 @@
                         <a href="javascript:void(0)" data-id="@record.Id">&#10005;</a>
                     </td>
                 }
-            </tr>              
+            </tr@(record.RankClass)>              
         }
 
     </table>
