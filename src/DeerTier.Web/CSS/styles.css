@@ -60,7 +60,7 @@ table
 .realTimeColumn { width: 90px; }
 .gameTimeColumn { width: 90px; }
 .escapeGameTimeColumn { width: 50px; }
-.proofColumn { width: 90px; }
+.proofColumn { width: 50px; }
 .dateSubmittedColumn { width: 80px; }
 .moderatorDeleteColumn { width: 50px; }
 
