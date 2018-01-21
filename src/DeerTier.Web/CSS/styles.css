@@ -57,11 +57,11 @@ table
 
 .rankColumn { width: 50px; }
 .playerColumn { width: 170px; }
-.realTimeColumn { width: 80px; }
-.gameTimeColumn { width: 80px; }
-.escapeGameTimeColumn { width: 40px; }
+.realTimeColumn { width: 90px; }
+.gameTimeColumn { width: 90px; }
+.escapeGameTimeColumn { width: 50px; }
 .proofColumn { width: 90px; }
-.dateSubmittedColumn { width: 130px; }
+.dateSubmittedColumn { width: 80px; }
 .moderatorDeleteColumn { width: 50px; }
 
 td.videoLink a

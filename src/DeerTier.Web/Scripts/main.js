@@ -5,10 +5,10 @@
         "info": false,
         "searching": false,
         "stripeClasses": [],
-        "columnDefs": [{
-            "targets": "nosort",
-            "orderable": false
-        }]
+        "columnDefs": [
+            { "targets": "nosort", "orderable": false },
+            { "targets": ["dateSubmittedColumn", "escapeGameTimeColumn"], "orderSequence": ["desc", "asc"] }
+        ]
     });
 
 

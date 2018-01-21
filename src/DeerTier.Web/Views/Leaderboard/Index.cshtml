@@ -101,19 +101,19 @@
                     </td>
                     @if (Model.Category.GameTime)
                     {
-                        <td>
+                        <td data-order="@record.GameTimeSeconds">
                             @record.FormattedGameTime
                         </td>
                     }
                     @if (Model.Category.RealTime)
                     {
-                        <td>
+                        <td data-order="@record.RealTimeSeconds">
                             @record.FormattedRealTime
                         </td>
                     }
                     @if (Model.Category.EscapeGameTime)
                     {
-                        <td>
+                        <td data-order="@record.CeresTime">
                             @record.FormattedEscapeGameTime
                         </td>
                     }
@@ -123,7 +123,7 @@
                     <td class="comment">
                         @Html.Raw(record.HtmlComment)
                     </td>
-                    <td>
+                    <td data-order="@record.DateSubmittedSortOrder">
                         @record.DateSubmittedAsString
                     </td>
                     @if (Model.IsModerator)
