@@ -64,7 +64,7 @@ namespace DeerTier.Web.Models
             {
                 if (DateSubmitted.HasValue)
                 {
-                    return DateSubmitted.Value.ToString("dd-MM-yyyy");
+                    return DateSubmitted.Value.ToString("yyyy-MM-dd");
                 }
                 return "";
             }
