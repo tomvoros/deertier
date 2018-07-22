@@ -1,0 +1,27 @@
+﻿@model DeerTier.Web.Models.MessagePageViewModel
+
+@{
+    ViewBag.Title = "Admin Request";
+}
+
+<div id="adminRequest">
+    <h1>Admin Request</h1>
+    <br />
+
+    @using (Html.BeginForm())
+    {
+        <div>
+            Use this form to make an admin request (e.g. change account name), but only after contacting support (see the very cryptic address in the footer), otherwise no one will ever see it!
+            <br/>
+
+            Request message:
+            <input type="text" name="requestMessage" maxlength="200" />
+        </div>
+
+        <input class="genericButton" type="submit" value="Submit" />
+    }
+
+    <div class="statusLiteral">
+        @Model.Message
+    </div>
+</div>

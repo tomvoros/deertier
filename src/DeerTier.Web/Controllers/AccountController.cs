@@ -146,5 +146,31 @@ namespace DeerTier.Web.Controllers
             }
             return Content(result);
         }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult AdminRequest()
+        {
+            return MessageView();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult AdminRequest(string requestMessage)
+        {
+            if (string.IsNullOrWhiteSpace(requestMessage))
+            {
+                return DefaultMessageView("Please enter a message");
+            }
+
+            if (requestMessage.Length > 200)
+            {
+                return DefaultMessageView("The message is too long (200 characters max).");
+            }
+
+            _logger.Info($"ADMIN REQUEST: {requestMessage}");
+
+            return MessageView("Success", "Your request has been logged. Please inform the admin that you've submitted your request. Thanks!", "Thank You");
+        }
     }
 }

@@ -234,6 +234,7 @@
     <None Include="Properties\PublishProfiles\preview.deertier.com.pubxml" />
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Account\AdminRequest.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
