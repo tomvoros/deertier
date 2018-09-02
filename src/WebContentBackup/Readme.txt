@@ -1,0 +1,1 @@
+The WebContentService saves backups in this folder. The backups are used in case the original source for the content becomes unavailable.

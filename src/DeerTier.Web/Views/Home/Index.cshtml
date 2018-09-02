@@ -34,35 +34,11 @@
         </div>
     }
 
-    <br />
-    Hello and welcome to <b>Deer Tier</b>! The aim of this site is to showcase the
-    best of the best in the <b>Super Metroid</b> speedrunning community. Submit your records and see how you stack up against your fellow speedrunners!
-    <br/><br/>
-    
-    If you wish to play any category on emulator, <span class="link"><a href="http://byuu.org/emulation/higan/">higan</a></span> is the recommended emulator to use.
-    Times should also follow
-    <span class="link"><a href="http://speedrunslive.com/" target="_blank">SpeedRunsLive</a></span> conventions. To quote the rules, this means:
-    <br /><br />
-
-    <div class="quoteContainer">
-        <div class="quote">
-            <ul>
-                <li>All files ... should start at 0:00 with the intro sequence completed so play begins in the Ceres station.</li>
-                <li>SNES9x 1.43 and ZSNES are banned.</li>
-                <li>Retroarch's Run-Ahead feature is banned.</li>
-                <li>Absolutely no emulator functions, such as savestates or speedups. No turbo-fire functions unless it is available on the original controller. No external devices such as game genie or gameshark. No scripts unless specifically allowed.</li>
-                <li>Save the critters at your own discretion.</li>
-            </ul>
-        </div>
+    <div class="wikiContent">
+        <!-- START WIKI CONTENT -->
+        @Html.Raw(Model.EmbeddedHtmlContent)
+        <!-- END WIKI CONTENT -->
     </div>
-    
-    <br />
-
-
-    In addition, the leaderboards operate on the honour system. Please do not attempt to pass off fake records as your own. 
-    If any times look suspicious, they may be removed. The best way to establish credibility is to hang out and race with the 
-    <a href="http://speedrunslive.com/gamelist/#!/supermetroid/1" target="_blank"><span class="link">SRL Super Metroid community</span></a>. 
-    With that said, enjoy the competition! Will you ascend to <span class="deerTierFont">Deer Tier?</span>
 
     @* NO POLLS RIGHT NOW
     <div class="mainPageSection pollsSection">
@@ -87,7 +63,7 @@
 
     <div class="mainPageSection newsSection">
         <h2 class="title">News</h2>
-        
+
         <div class="newsPost">
             <ul class="newsMeta">
                 <li class="newsDate">August 4, 2018</li>
@@ -104,19 +80,6 @@
         </div>
 
         <a href="/News">Past News</a>
-    </div>
-
-    <div class="mainPageSection communitySection">
-        <h2 class="title">Community</h2>
-        <br />
-        <p>
-            Check out the <a href="https://wiki.supermetroid.run/" target="_blank" class="link">Super Metroid Speedrunning Wiki</a></span> for all kinds of great resources on the game, including the full <a href="https://wiki.supermetroid.run/Categories" target="_blank" class="link">list of categories</a>.
-            This includes inactive categories that may be retired from Deer Tier.
-        </p>
-        <br/>
-        <p>
-            You can also join our <a href="@Model.DiscordUrl" target="_blank" class="link"><img src="~/Images/discord.png" /></a> server and chat with other Super Metroid speedrunners.
-        </p>
     </div>
 
     <div class="mainPageSection">

@@ -638,7 +638,10 @@ textarea
     text-decoration: underline;
 }
 
-.title
+.title,
+.wikiContent h1,
+.wikiContent h2,
+.wikiContent h3
 {
     text-align: center;
 }
@@ -672,23 +675,6 @@ textarea
 .announcementContainerImage
 {
     float: right;
-}
-
-.quoteContainer
-{
-   width: 350px;
-   margin: 0 auto;
-   background-color: #331F51;
-   padding: 10px 35px 10px 50px;
-   border-radius: 10px;
-}
-
-.quote
-{
-    
-    font-size: 16px;
-    color: Silver;
-    font-style: italic;
 }
 
 .topLeftQuote
@@ -758,9 +744,37 @@ textarea
     vertical-align: middle;
 }
 
-.link
+.link,
+.wikiContent a
 {
     text-decoration: underline;
+}
+
+.wikiContent p
+{
+    margin: 20px 0;
+}
+
+.wikiContent blockquote
+{
+    width: 670px;
+    margin: 0 auto;
+    background-color: #331F51;
+    padding: 10px 35px 10px 50px;
+    border-radius: 10px;
+    color: Silver;
+    font-style: italic;
+}
+
+.wikiContent .discordButton a
+{
+    display: inline-block;
+    background-image:url('../Images/Discord.png');
+    width: 100px;
+    height: 34px;
+    vertical-align: middle;
+    color: transparent;
+    font-size: 0;
 }
 
 .deerForceFont

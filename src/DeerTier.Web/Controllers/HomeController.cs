@@ -1,6 +1,8 @@
 ﻿using DeerTier.Web.Models;
 using DeerTier.Web.Services;
 using DeerTier.Web.Utils;
+using log4net;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -8,8 +10,15 @@ namespace DeerTier.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        public HomeController(AccountService accountService, CategoryService categoryService)
-            : base(accountService, categoryService) { }
+        private static readonly ILog _logger = LogManager.GetLogger(typeof(HomeController));
+
+        private readonly WebContentService _webContentService;
+
+        public HomeController(AccountService accountService, CategoryService categoryService, WebContentService webContentService)
+            : base(accountService, categoryService)
+        {
+            _webContentService = webContentService;
+        }
 
         public ActionResult Index()
         {
@@ -35,10 +44,29 @@ namespace DeerTier.Web.Controllers
             }
 
             var viewModel = CreateViewModel<HomePageViewModel>();
+            viewModel.EmbeddedHtmlContent = GetHomepageContent();
             viewModel.FormattedModerators = text;
             viewModel.DiscordUrl = ConfigHelper.DiscordUrl;
 
             return View(viewModel);
+        }
+
+        private string GetHomepageContent()
+        {
+            try
+            {
+                var homepageContent = _webContentService.GetContent(ConfigHelper.HomepageContentUrl);
+                if (string.IsNullOrWhiteSpace(homepageContent))
+                {
+                    throw new Exception("No homepage content");
+                }
+                return homepageContent;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error("Failed to get homepage content", ex);
+                return "[Failed to load homepage content.]";
+            }
         }
 
         public ActionResult News()

@@ -197,8 +197,10 @@
     <Compile Include="Data\LeaderboardRepository.cs" />
     <Compile Include="Services\LeaderboardService.cs" />
     <Compile Include="Services\ModerationService.cs" />
+    <Compile Include="Services\WebContentService.cs" />
     <Compile Include="Utils\ApiException.cs" />
     <Compile Include="Utils\ConfigHelper.cs" />
+    <Compile Include="Utils\PathUtil.cs" />
     <Compile Include="Utils\RecordUtil.cs" />
     <Compile Include="Utils\TimeUtil.cs" />
   </ItemGroup>

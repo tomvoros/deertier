@@ -33,6 +33,7 @@ namespace DeerTier.Web
             _container.Register(Component.For<AccountService>().LifestyleSingleton());
             _container.Register(Component.For<LeaderboardService>().LifestyleSingleton());
             _container.Register(Component.For<ModerationService>().LifestyleSingleton());
+            _container.Register(Component.For<WebContentService>().LifestyleSingleton());
         } 
 
         public static void Dispose()
