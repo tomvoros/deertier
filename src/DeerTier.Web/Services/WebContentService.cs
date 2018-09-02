@@ -1,6 +1,7 @@
 ﻿using DeerTier.Web.Utils;
 using log4net;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -12,6 +13,7 @@ namespace DeerTier.Web.Services
     {
         private static readonly ILog _logger = LogManager.GetLogger(typeof(WebContentService));
         private static readonly object _lock = new object();
+        private static readonly IList<string> _cachedUrls = new List<string>();
 
         public string GetContent(string url)
         {
@@ -37,6 +39,10 @@ namespace DeerTier.Web.Services
                 {
                     // Cache the content
                     WebCache.Set(url, content, minutesToCache: 60, slidingExpiration: false);
+                    if (!_cachedUrls.Contains(url))
+                    {
+                        _cachedUrls.Add(url);
+                    }
 
                     // Save backup copy in case the source becomes unavailable
                     SaveContentBackup(url, content);
@@ -116,6 +122,26 @@ namespace DeerTier.Web.Services
         {
             var fileName = PathUtil.SanitizeFileName(url);
             return Path.Combine(PathUtil.AppPath, ConfigHelper.WebContentBackupPath, fileName);
+        }
+
+        public void FlushCache()
+        {
+            lock (_lock)
+            {
+                try
+                {
+                    foreach (var url in _cachedUrls)
+                    {
+                        WebCache.Remove(url);
+                    }
+
+                    _cachedUrls.Clear();
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error("Failed to flush the cache", ex);
+                }
+            }   
         }
     }
 }

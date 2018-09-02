@@ -7,11 +7,13 @@ namespace DeerTier.Web.Controllers
     public class AdminController : BaseController
     {
         private readonly LeaderboardService _leaderboardService;
+        private readonly WebContentService _webContentService;
 
-        public AdminController(AccountService accountService, CategoryService categoryService, LeaderboardService leaderboardService)
+        public AdminController(AccountService accountService, CategoryService categoryService, LeaderboardService leaderboardService, WebContentService webContentService)
             : base(accountService, categoryService)
         {
             _leaderboardService = leaderboardService;
+            _webContentService = webContentService;
         }
 
         [HttpGet]
@@ -56,6 +58,14 @@ namespace DeerTier.Web.Controllers
             var deletedRecords = _leaderboardService.GetAllDeletedRecords();
             
             return View(deletedRecords);
+        }
+
+        [HttpGet]
+        public ActionResult FlushWebContentCache()
+        {
+            _webContentService.FlushCache();
+
+            return Content("ok");
         }
     }
 }
