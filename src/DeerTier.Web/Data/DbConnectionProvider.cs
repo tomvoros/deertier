@@ -1,6 +1,7 @@
-﻿using System.Configuration;
+﻿using Dapper.FastCrud;
+using MySqlConnector;
+using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace DeerTier.Web.Data
 {
@@ -8,9 +9,14 @@ namespace DeerTier.Web.Data
     {
         private static readonly string _connectionString = ConfigurationManager.ConnectionStrings["Database"].ConnectionString;
 
+        static DbConnectionProvider()
+        {
+            OrmConfiguration.DefaultDialect = SqlDialect.MySql;
+        }
+
         public IDbConnection GetConnection()
         {
-            var connection = new SqlConnection(_connectionString);
+            var connection = new MySqlConnection(_connectionString);
             connection.Open();
             return connection;
         }

@@ -4,7 +4,6 @@ using DeerTier.Web.Models;
 using DeerTier.Web.Objects;
 using System;
 using System.Linq;
-using System.Transactions;
 
 namespace DeerTier.Web.Data
 {
@@ -21,14 +20,14 @@ namespace DeerTier.Web.Data
         {
             try
             {
-                using (var trans = new TransactionScope())
                 using (var conn = _connectionProvider.GetConnection())
+                using (var trans = conn.BeginTransaction())
                 {
-                    conn.Delete(record);
+                    conn.Delete(record, s => s.AttachToTransaction(trans));
                     
                     conn.Execute(@"
                         INSERT INTO tblRecordDeletionLog (Moderator, CategoryId, DeletionDate, Player, RealTimeString, GameTimeString, RealTimeSeconds, GameTimeSeconds, Comment, VideoURL, CeresTime, DateSubmitted, SubmittedByUserId, IPAddress)
-                        VALUES (@Moderator, @CategoryId, GetDate(), @Player, @RealTimeString, @GameTimeString, @RealTimeSeconds, @GameTimeSeconds, @Comment, @VideoURL, @CeresTime, @DateSubmitted, @SubmittedByUserId, @IPAddress);", 
+                        VALUES (@Moderator, @CategoryId, NOW(), @Player, @RealTimeString, @GameTimeString, @RealTimeSeconds, @GameTimeSeconds, @Comment, @VideoURL, @CeresTime, @DateSubmitted, @SubmittedByUserId, @IPAddress);", 
                         new
                         {
                             Moderator = moderator,
@@ -44,9 +43,9 @@ namespace DeerTier.Web.Data
                             DateSubmitted = record.DateSubmitted,
                             SubmittedByUserId = record.SubmittedByUserId,
                             IPAddress = IPAddress
-                        });
+                        }, transaction: trans);
 
-                    trans.Complete();
+                    trans.Commit();
 
                     return true;
                 }
@@ -68,8 +67,8 @@ namespace DeerTier.Web.Data
         public Category[] GetCategories()
         {
             var sql = @"
-SELECT * FROM refSections ORDER BY ID
-SELECT * FROM tblCategories WHERE Enabled = 1 ORDER BY ID
+SELECT * FROM refSections ORDER BY ID;
+SELECT * FROM tblCategories WHERE Enabled = 1 ORDER BY ID;
 ";
 
             using (var conn = _connectionProvider.GetConnection())
@@ -132,22 +131,22 @@ SELECT * FROM tblCategories WHERE Enabled = 1 ORDER BY ID
 
         public void AddRecord(Record record)
         {
-            using (var trans = new TransactionScope())
             using (var conn = _connectionProvider.GetConnection())
+            using (var trans = conn.BeginTransaction())
             {
                 // Check if record already exists
-                var exists = conn.ExecuteScalar<int>("SELECT COUNT(*) FROM tblRecords WHERE Player = @Player AND CategoryId = @CategoryId", new { Player = record.Player, CategoryId = record.CategoryId }) > 0;
+                var exists = conn.ExecuteScalar<int>("SELECT COUNT(*) FROM tblRecords WHERE Player = @Player AND CategoryId = @CategoryId", new { Player = record.Player, CategoryId = record.CategoryId }, transaction: trans) > 0;
 
                 if (exists)
                 {
                     // Delete existing record
-                    conn.Execute("DELETE FROM tblRecords WHERE Player = @Player AND CategoryId = @CategoryId", new { Player = record.Player, CategoryId = record.CategoryId });
+                    conn.Execute("DELETE FROM tblRecords WHERE Player = @Player AND CategoryId = @CategoryId", new { Player = record.Player, CategoryId = record.CategoryId }, transaction: trans);
                 }
 
                 // Insert new record
-                conn.Insert(record);
+                conn.Insert(record, s => s.AttachToTransaction(trans));
 
-                trans.Complete();
+                trans.Commit();
             }
         }
 

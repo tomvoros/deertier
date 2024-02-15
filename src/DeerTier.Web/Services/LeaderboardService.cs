@@ -1,7 +1,6 @@
 ﻿using DeerTier.Web.Data;
 using DeerTier.Web.Models;
 using DeerTier.Web.Objects;
-using System.Transactions;
 
 namespace DeerTier.Web.Services
 {
@@ -28,31 +27,19 @@ namespace DeerTier.Web.Services
 
         public void AddRecord(UserContext context, Record record, bool isModeratorAction)
         {
-            using (var trans = new TransactionScope())
+            _leaderboardRepository.AddRecord(record);
+
+            if (isModeratorAction)
             {
-                _leaderboardRepository.AddRecord(record);
-
-                if (isModeratorAction)
-                {
-                    _moderationService.LogSubmitRecord(context, record);
-                }
-
-                trans.Complete();
+                _moderationService.LogSubmitRecord(context, record);
             }
         }
 
         public bool DeleteRecord(UserContext context, Record record)
         {
-            bool result;
+            bool result = _leaderboardRepository.DeleteRecord(record, context.IpAddress, context.User.Name);
 
-            using (var trans = new TransactionScope())
-            {
-                result = _leaderboardRepository.DeleteRecord(record, context.IpAddress, context.User.Name);
-
-                _moderationService.LogDeleteRecord(context, record);
-
-                trans.Complete();
-            }
+            _moderationService.LogDeleteRecord(context, record);
 
             return result;
         }
