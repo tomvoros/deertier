@@ -1,26 +1,17 @@
 -- tblModerationLog is a log of moderator actions (e.g. deleting or creating records)
 
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [deertier].[tblModerationLog](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[UserId] [int] NOT NULL,
-	[Action] [tinyint] NOT NULL,
-	[Description] [nvarchar](1000) NULL,
-	[RelatedId1] [int] NULL,
-	[RelatedId2] [int] NULL,
-	[RelatedId3] [int] NULL,
-	[Date] [datetime] NOT NULL,
-	[IPAddress] [nvarchar](100) NOT NULL,
-	[UserAgent] [nvarchar](1000) NOT NULL,
- CONSTRAINT [PK_tblModerationLog] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
-GO
+CREATE TABLE `tblModerationLog` (
+	`Id` int NOT NULL AUTO_INCREMENT,
+	`UserId` int NOT NULL,
+	`Action` tinyint unsigned NOT NULL,
+	`Description` varchar(1000),
+	`RelatedId1` int,
+	`RelatedId2` int,
+	`RelatedId3` int,
+	`Date` datetime(6) NOT NULL,
+	`IPAddress` varchar(100) NOT NULL,
+	`UserAgent` varchar(1000) NOT NULL,
+	PRIMARY KEY (`Id`)
+) ENGINE InnoDB,
+  CHARSET utf8mb4,
+  COLLATE utf8mb4_0900_ai_ci;
