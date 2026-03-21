@@ -1,6 +1,10 @@
+> [!IMPORTANT]
+> This repository is now archived. Please see the repository for the new deertier.com here:
+> https://github.com/tomvoros/deertier-express
+
 # deertier
 
-This repository contains the code and DB schema/data for deertier.com.
+This repository contains the code and DB schema/data for the old deertier.com.
 
 ## Website
 
